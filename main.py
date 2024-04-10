@@ -16,7 +16,7 @@ website_label = Label(text="Website :")
 website_label.grid(column=0,row=1)
 
 # website text
-website_field = Entry(width=40)
+website_field = Entry(width=53)
 website_field.grid(row=1,column=1,sticky="w")
 website_field.focus()
 
@@ -37,8 +37,30 @@ password_label.grid(column=0,row=3)
 password_field = Entry(width=25)
 password_field.grid(row=3,column=1,sticky="w")
 
+# ------------Password Generate-----------
+import random
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+def pass_gen_button():
+    password_list = []
+    for char in range(1, 5):
+        password_list.append(random.choice(letters))
+
+    for char in range(1, 5):
+        password_list += random.choice(symbols)
+
+    for char in range(1, 5):
+        password_list += random.choice(numbers)
+    random.shuffle(password_list)
+    password = ""
+    for char in password_list:
+        password += char
+    password_field.insert(0, password)
+
+
 # passowrd_generate button
-password_button = Button(text="Generate Password",width=20)
+password_button = Button(text="Generate Password",width=20,command=pass_gen_button)
 password_button.grid(row=3,column=1,sticky="e")
 
 # add function
@@ -56,8 +78,5 @@ add_button = Button(text="ADD",width=45,command=on_click)
 add_button.grid(row=4,column=1,sticky="w")
 
 window.mainloop()
-
-# ------------Password Generate-----------
-
 
 
