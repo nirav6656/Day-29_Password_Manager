@@ -44,11 +44,12 @@ password_button.grid(row=3,column=1,sticky="e")
 # add function
 def on_click():
     website_name = website_field.get()
-    print(website_name)
     email_text = email_field.get()
-    print(email_text)
     password_text = password_field.get()
-    print(password_text)
+# --------------Add Data to file----------
+    file = open("password.txt", "a")
+    file.write(f"{website_name}  ||  {email_text}  ||  {password_text}\n")
+    file.close()
 
 # add button button
 add_button = Button(text="ADD",width=45,command=on_click)
@@ -58,4 +59,5 @@ window.mainloop()
 
 # ------------Password Generate-----------
 
-# --------------Add Data to file----------
+
+
